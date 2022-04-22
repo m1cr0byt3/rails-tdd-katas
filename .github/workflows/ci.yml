@@ -1,12 +1,8 @@
 name: CI Rails
 on:
   pull_request:
-    types:
-    - closed
     branches:
-      - 'hotfix/**'
-      - 'features/**'
-      - 'fix/**'
+      - 'staging'
 
 jobs:
   verify:
