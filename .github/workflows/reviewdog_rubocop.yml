@@ -1,5 +1,11 @@
 name: reviewdog
-on: [pull_request]
+on:
+  pull_request:
+    branches:
+      - 'hotfix/**'
+      - 'features/**'
+      - 'fix/**'
+
 jobs:
   rubocop:
     name: runner / rubocop
