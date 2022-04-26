@@ -1,0 +1,9 @@
+# frozen_string_literal: true
+
+# Resources Utils
+class Utils
+  WORD = 'Documenting'
+  public_constant :WORD
+  TOTAL_WORDS = 274
+  public_constant :TOTAL_WORDS
+end

@@ -8,7 +8,18 @@ class ApplicationService
     new(*args, &block).call
   end
 
+  def call
+    @success = false
+    @message = ''
+    @data = []
+  end
+
   def success?
-    Struct.new(:success?, :errors, :data).new(success, messages, data)
+    Struct.new(:success?, :messages, :data).new(@success, @messages, @data)
+  end
+
+  def fail_process(message)
+    @success = false
+    @messages = message 
   end
 end
