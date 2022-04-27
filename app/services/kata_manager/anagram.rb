@@ -79,7 +79,7 @@ module KataManager
 
     def remaining_word(match)
       binding.pry if match == 'cein'
-      remaining = order_word(@word_base).chars.grep(/[^#{match}]/)
+      remaining = order_word(@word_base).chars.select { |char|  }
       criteria_match(remaining.join)
     end
 
