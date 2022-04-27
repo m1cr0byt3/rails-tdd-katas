@@ -11,7 +11,7 @@ class ApplicationService
   def call
     @success = false
     @message = ''
-    @data = []
+    @data = {}
   end
 
   def success?
@@ -20,6 +20,6 @@ class ApplicationService
 
   def fail_process(message)
     @success = false
-    @messages = message 
+    @messages = message
   end
 end
