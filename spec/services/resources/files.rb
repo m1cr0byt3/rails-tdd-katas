@@ -9,4 +9,5 @@ class Files
   public_constant :OK
   public_constant :NOT_FOUND
   public_constant :EMPTY
+  public_constant :ORIGINAL
 end
