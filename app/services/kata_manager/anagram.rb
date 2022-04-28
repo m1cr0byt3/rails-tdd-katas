@@ -14,7 +14,6 @@ module KataManager
       begin
         process_words
       rescue StandardError => error
-        binding.pry
         fail_process(error.message)
       end
       success?
@@ -51,36 +50,37 @@ module KataManager
 
     def part_of_word(word, index)
       word = order_word(word)
-      puts "word: #{word}"
+
       match = word.match(/#{@regex}/).to_a.first
       if match.present? && match == word
-        @rest_match = remaining_word(match)
-        puts "rest_match: #{@rest_match}"
+        @rest_match = criteria_match(remaining_word(match))
+
         @next_index = index + 1
-        next_word = @list_words[@next_index]
-        rest_chars_total = @word_base.size - match.size
-        match_next(next_word, match) while @next_index < @data[:total_list_words] && next_word.size == rest_chars_total
+        match_next(match) while @next_index < @data[:total_list_words]
       else
         false
       end
       true
     end
 
-    def match_next(next_word, match)
-      next_match = next_word.match(/#{@rest_match}/).to_a.first
-      puts "match: #{match},next_match #{next_match}  next_word: #{next_word}"
-      save_matchs(next_match, match) if next_match.present? && next_match == next_word
+    def match_next(match)
+      rest_chars_total = @word_base.size - match.size
+      if @list_words[@next_index].size == rest_chars_total
+        order_next = order_word(@list_words[@next_index])
+        next_match = order_next.match(/#{@rest_match}/).to_a.first
+        save_matchs(next_match, match) if next_match.present? && remaining_word(match) == order_next
+      end
       @next_index += 1
     end
 
     def save_matchs(_next_match, _match)
-      puts '123'
+      binding.pry
     end
 
     def remaining_word(match)
-      binding.pry if match == 'cein'
-      remaining = order_word(@word_base).chars.select { |char|  }
-      criteria_match(remaining.join)
+      word_format = order_word(@word_base)
+      match.chars.each { |char| word_format.sub!(char, '') }
+      word_format
     end
 
     def order_word(word)
