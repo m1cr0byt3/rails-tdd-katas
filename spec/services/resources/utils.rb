@@ -6,4 +6,7 @@ class Utils
   public_constant :WORD
   TOTAL_WORDS = 274
   public_constant :TOTAL_WORDS
+  EVAL_WORDS = 1633
+  public_constant :EVAL_WORDS
+  
 end

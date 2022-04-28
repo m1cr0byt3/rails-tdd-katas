@@ -11,6 +11,7 @@ module KataManager
 
     def call
       super
+      @data[:matches] = []
       begin
         process_words
       rescue StandardError => error

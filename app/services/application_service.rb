@@ -21,6 +21,5 @@ class ApplicationService
   def fail_process(message)
     @success = false
     @messages = message
-    puts " ++++++++++++#{message}"
   end
 end
