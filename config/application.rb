@@ -34,6 +34,7 @@ module RilasTddKatas
     config.i18n.default_locale = 'es-MX'
     config.autoload_paths << "#{root}/app/services"
     config.autoload_paths << "#{root}/spec/services/resources"
+    config.autoload_paths << "#{root}/lib"
     config.api_only = true
   end
 end

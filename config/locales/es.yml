@@ -1,0 +1,3 @@
+es-MX:
+  exceptions:
+    parser_invalid: Número de carácteres inválido

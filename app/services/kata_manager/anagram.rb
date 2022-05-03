@@ -7,7 +7,7 @@ module KataManager
       config_word(word_base)
       @path_file = path_file
     end
-    attr_accessor :word_base, :regex, :list_words, :file_manager, :rest_match
+    attr_accessor :word_base, :regex, :list_words, :rest_match
 
     def call
       super
@@ -36,7 +36,7 @@ module KataManager
     end
 
     def process_words
-      @file_manager = FileManager::Read.call(@path_file)
+      init_file(@path_file)
       evaluate_words
     end
 
@@ -89,12 +89,6 @@ module KataManager
 
     def order_word(word)
       word.chars.sort(&:casecmp).join.downcase
-    end
-
-    def read_file
-      raise(StandardError, @file_manager.messages) unless @file_manager.success?
-
-      @file_manager.data
     end
   end
 end
