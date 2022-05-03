@@ -4,7 +4,9 @@ require 'rails_helper'
 RSpec.describe('KataManager::BankOcrChecksum', type: :service) do
   describe '#call' do
     let(:accounts) { Utils::ACCOUNTS }
-    let(:call) { KataManager::BankOcrChecksum.call(accounts) }
+    let(:accounts_fail) { Utils::ACCOUNTS_FAIL }
+    let(:checksum) { KataManager::BankOcrChecksum.call(accounts) }
+    let(:checksum_failed) { KataManager::BankOcrChecksum.call(accounts_fail) }
     
     context 'when success' do
       it 'validate correct checksum' do
